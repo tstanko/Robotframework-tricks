@@ -19,8 +19,5 @@ Suite Teardown    Close Browser
 #     Open Login Page
 #     Log In
 
-# switching tabs test
-#     switch tabs
-
-using iframe test
-    use iframe
+switching tabs test
+    switch tabs
