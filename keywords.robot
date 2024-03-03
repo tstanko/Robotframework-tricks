@@ -41,7 +41,7 @@ Open Login Page
 
 Log In
     Set Selenium Speed    0.5
-    Wait Until Element Is Visible    id:userName
+    # Wait Until Element Is Visible    id:userName
     Input Text    id:userName    ${LOGIN}    true
     Input Password    id:password    ${PASSWORD}
     Click Button    id:login
@@ -63,18 +63,20 @@ switch tabs
     Title Should Be    DEMOQA           
 
 use iframe
-    Set Selenium Speed    1
     Go To    https://www.nyse.com/markets/nyse-american
-    Sleep    2
-    Click Button    id:onetrust-reject-all-handler
+    # Sleep   4
+    Repeat    Click Button    id:onetrust-reject-all-handler
     Scroll Element Into View    xpath://*[text()='Largest Quoted Size at Best Prices']
     Select Frame      xpath:(//iframe)[1]   # Select frame with id or name 'top-frame'
+    Sleep   2
     Click Element At Coordinates    xpath://*[text()='Nasdaq']    50    0
     Capture Page Screenshot    Nasdaq_result.png
-    Sleep    5
     Unselect Frame        # Back to main frame.
     Scroll Element Into View    xpath://*[@href="https://www.nyse.com"]
     Capture Page Screenshot    
     Click Element    xpath://*[@href="https://www.nyse.com"]
     Element Should Not Be Visible    xpath://*[contains(text(),"Team spirit happens here")]
     
+Repeat    
+    [Arguments]    ${KW}    ${KWARGS}
+    Wait Until Keyword Succeeds    60s    1    ${KW}    ${KWARGS}    
