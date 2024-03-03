@@ -12,15 +12,15 @@ Suite Setup    chromedriver setup
 Suite Teardown    Close Browser
 
 *** Test Cases ***
-# smoke test
+# Smoke test
 #     Open Login Page
 
-# login test
+# Login test
 #     Open Login Page
 #     Log In
 
-# switching tabs test
-#     switch tabs
+Switching tabs test
+    Switch tabs
 
-using iframe test
-    use iframe
+Using_iframe_test
+    Use iframe

@@ -48,7 +48,7 @@ Log In
     Wait Until Element Is Visible    id:gotoStore
     Sleep   2
 
-switch tabs
+Switch tabs
     Set Selenium Speed    1
     Go To    ${FIRST TAB URL}
     dismiss banner
@@ -62,13 +62,12 @@ switch tabs
     Switch Window    MAIN  # switch back to original tab
     Title Should Be    DEMOQA           
 
-use iframe
+Use iframe
     Go To    https://www.nyse.com/markets/nyse-american
-    # Sleep   4
-    Repeat    Click Button    id:onetrust-reject-all-handler
+    Sleep    1.4
+    Click Button    id:onetrust-reject-all-handler
     Scroll Element Into View    xpath://*[text()='Largest Quoted Size at Best Prices']
     Select Frame      xpath:(//iframe)[1]   # Select frame with id or name 'top-frame'
-    Sleep   2
     Click Element At Coordinates    xpath://*[text()='Nasdaq']    50    0
     Capture Page Screenshot    Nasdaq_result.png
     Unselect Frame        # Back to main frame.
@@ -80,3 +79,7 @@ use iframe
 Repeat    
     [Arguments]    ${KW}    ${KWARGS}
     Wait Until Keyword Succeeds    60s    1    ${KW}    ${KWARGS}    
+
+# pip install robotframework-retryfailed
+# robot --listener RetryFailed:5 tests.robot
+# robot -t Using_iframe_test --listener RetryFailed:5 tests.robot     
